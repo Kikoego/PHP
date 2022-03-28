@@ -1,7 +1,21 @@
-<?php
-    $str1 = $_GET['name'];
-    $str2 = $_GET['surname'];
-    $result = '<h1>Имя; '.$str1.'</h1>';
-    $result .= '<h1>Фамилия; '.$str2. '</h1>';
-    print_r($result);
+<?php 
+    session_start();
+    header('Content-type: text/html; charset=utf-8');
+    if (!isset($_SESSION['user_login'])) {
+        header('Location: login.php');
+    }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>Главная</title>
+</head>
+<body>
+    <h1>Привет, <?php echo $_SESSION['user_login'];?></h1>
+    <a href="login.php?act=logout">Выйти</a><br>
+    <a href="register.php?act=register">Регистрация</a><br>
+    <a href="profile.php?act=profile">Профиль</a><br>
+</div>
+</body>
+</html>
